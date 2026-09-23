@@ -10,7 +10,7 @@ const buildConfig: BuildConfig = {
     defaultServers: [
         {
             name: 'AdviceBrands - PH',
-            url: 'https://advicebrands-team.duckdns.org',
+            url: 'https://advicebrands-ph.website',
         },
     ],
     helpLink: DEFAULT_HELP_LINK,
