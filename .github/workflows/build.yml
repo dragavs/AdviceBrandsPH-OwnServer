@@ -11,7 +11,12 @@ env:
 
 jobs:
   build-windows:
-    runs-on: windows-latest
+    # Pinned to 2022, not windows-latest: node-gyp bundled in this Mattermost
+    # release fails to recognize the Visual Studio version on newer runner
+    # images ("unknown version 'undefined'"), so windows-focus-assist (a
+    # native module) can't compile. windows-2022 ships a VS version node-gyp
+    # actually detects.
+    runs-on: windows-2022
     steps:
       - name: Checkout upstream
         uses: actions/checkout@v4
