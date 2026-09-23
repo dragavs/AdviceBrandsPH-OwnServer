@@ -3,6 +3,9 @@ name: Build Desktop Client
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   UPSTREAM_REF: v6.3.0
 
