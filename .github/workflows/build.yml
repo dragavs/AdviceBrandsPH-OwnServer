@@ -47,12 +47,16 @@ jobs:
         working-directory: desktop
         run: npm run package:windows-msi
 
+      - name: List release output (debug)
+        shell: bash
+        run: find desktop/release -type f | sort
+
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: Latest build
-          files: desktop/release/*.msi
+          files: desktop/release/**/*.msi
           token: ${{ secrets.GITHUB_TOKEN }}
 
   build-mac:
@@ -90,12 +94,15 @@ jobs:
           npm run build-prod
           npx electron-builder --mac --x64 --arm64 --publish=never
 
+      - name: List release output (debug)
+        run: find desktop/release -type f | sort
+
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: Latest build
           files: |
-            desktop/release/*.dmg
-            desktop/release/*.zip
+            desktop/release/**/*.dmg
+            desktop/release/**/*.zip
           token: ${{ secrets.GITHUB_TOKEN }}
